@@ -1,8 +1,15 @@
 import React from 'react'
+import styles from './Header.module.css'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Header = () => {
   return (
-    <div>Todo list</div>
+    <Row>
+      <Col>
+        <div className={styles.root}>Todo list</div>
+      </Col>
+    </Row>
   )
 }
 

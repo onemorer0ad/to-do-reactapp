@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddTodo from "./Components/AddTodo/AddTodo";
 import Header from "./Components/Header/Header";
 import TodoList from "./Components/TodoList/TodoList";
-
+import {Container} from 'react-bootstrap'
 
 
 function App() {
@@ -13,27 +13,30 @@ function App() {
     {
       id:1,
       title: 'first todo',
+      description: 'Описание',
       status: true,
     },
     {
       id:2,
       title: 'second todo',
+      description: 'Описание',
       status: true,
     },
     {
       id:3,
       title: 'third todo',
+      description: 'Описание',
       status: false,
     },
   ])
 
   return (
-    <div className="App">
+    <Container>
       <Header />
       <AddTodo todo={todo} setTodo={setTodo} />
       <TodoList todo={todo} setTodo={setTodo} />
 
-    </div>
+    </Container>
   );
 }
 
