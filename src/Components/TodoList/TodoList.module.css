@@ -15,3 +15,8 @@
     background: #ff9797;
     border-radius: 6px;
 }
+
+.close {
+    color: gray;
+    text-decoration: line-through;
+}

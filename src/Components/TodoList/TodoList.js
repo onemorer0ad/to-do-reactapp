@@ -7,6 +7,8 @@ const TodoList = ({ todo, setTodo }) => {
 
   const [value, setValue] = useState('')
   const [descr, setDescr] = useState('')
+  const [date, setDate] = useState('')
+  const [file, setFile] = useState('')
 
   function deleteTodo(id) {
     let newTodo = [...todo].filter((item) => item.id !== id);
@@ -23,11 +25,12 @@ const TodoList = ({ todo, setTodo }) => {
     setTodo(newTodo);
   }
 
-  function editTodo(id, title, description) {
+  function editTodo(id, title, description, date) {
     setEdit(id);
     setValue(title)
     setDescr(description)
-
+    setDate(date)
+    setFile(file)
   }
 
   function saveTodo(id) {
@@ -35,6 +38,8 @@ const TodoList = ({ todo, setTodo }) => {
          if (item.id === id) {
             item.title = value
             item.description = descr
+            item.date = date
+            item.file = file
     }
     return item;
 })
@@ -50,11 +55,15 @@ const TodoList = ({ todo, setTodo }) => {
             <div>
               <input onChange={(e) =>setValue(e.target.value)} value={value} />
               <input onChange={(e) =>setDescr(e.target.value)}  value={descr} />
+              <input onChange={(e) =>setDate(e.target.value)}  value={date} />
+              <input onChange={(e) =>setFile(e.target.value)}  value={file} />
             </div>
           ) : (
             <div>
-              <h2>{item.title} </h2>
-              <p>{item.description}</p>
+              <h2 className={ !item.status? s.close : ''}>{item.title} </h2>
+              <p className={ !item.status? s.close : '' }>{item.description}</p>
+              <p className={ !item.status? s.close : '' }>{item.date}</p>
+              <p className={ !item.status? s.close : '' }>{item.file}</p>
             </div>
           )}
 
@@ -62,9 +71,11 @@ const TodoList = ({ todo, setTodo }) => {
             <Button onClick={() => saveTodo(item.id)}>Сохранить</Button>
           ) : (
             <div>
-              <Button   onClick={() => deleteTodo(item.id)}>Удалить</Button>
-              <Button className={s.btn} onClick={() => editTodo(item.id, item.title, item.description)}>Редактировать</Button>
-              <Button className={s.btn} onClick={() => statusTodo(item.id)}>Закрыть/ Открыть</Button>
+              <Button  onClick={() => statusTodo(item.id)}>
+                { item.status ? 'Открыто'  : 'Закрыто' }
+              </Button>
+              <Button className={s.btn} onClick={() => editTodo(item.id, item.title, item.description, item.date)}>Редактировать</Button>
+              <Button className={s.btn}  onClick={() => deleteTodo(item.id)}>Удалить</Button>
             </div>
           )}
         </div>

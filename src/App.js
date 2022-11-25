@@ -14,18 +14,21 @@ function App() {
       id:1,
       title: 'first todo',
       description: 'Описание',
+      date: '25 01 2024',
       status: true,
     },
     {
       id:2,
       title: 'second todo',
       description: 'Описание',
+      date: '25 01 2024',
       status: true,
     },
     {
       id:3,
       title: 'third todo',
       description: 'Описание',
+      date: '25 01 2024',
       status: false,
     },
   ])
