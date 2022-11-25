@@ -63,7 +63,9 @@ const TodoList = ({ todo, setTodo }) => {
               <h2 className={ !item.status? s.close : ''}>{item.title} </h2>
               <p className={ !item.status? s.close : '' }>{item.description}</p>
               <p className={ !item.status? s.close : '' }>{item.date}</p>
-              <p className={ !item.status? s.close : '' }>{item.file}</p>
+              <div className={ !item.status? s.close : '' }>
+                <img src={item.file} alt={item.file} />
+                </div>
             </div>
           )}
 
